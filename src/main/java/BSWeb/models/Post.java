@@ -14,7 +14,6 @@ public class Post {
 
     private String title;
     private String text;
-    private String image;
     private int views;
 
     public Long getId() {
@@ -39,14 +38,6 @@ public class Post {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public int getViews() {
