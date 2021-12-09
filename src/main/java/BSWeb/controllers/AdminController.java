@@ -23,7 +23,7 @@ public class AdminController {
 
     @GetMapping("/login")
     public String show_auth_form(Model model) {
-        return "adminloginPage";
+        return "admin/loginPage";
     }
 
     // защита от sql-инъекций не реализована!
