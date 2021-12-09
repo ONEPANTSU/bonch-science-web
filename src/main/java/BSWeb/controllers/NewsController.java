@@ -15,7 +15,6 @@ public class NewsController {
 
     @GetMapping("/news")
     public String news(Model model) {
-
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
         model.addAttribute("title", "Новости от Bonch-Science!");
