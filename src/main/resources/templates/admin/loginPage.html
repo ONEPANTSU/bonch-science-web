@@ -11,6 +11,9 @@
             <form method="POST" action="/admin/login">
                 <h1> Вход в систему </h1>
 
+                <div th:switch="${invalid_password}">
+                    <p th:case=1> <span style="color:red"> Неверный логин или пароль </span> </p>
+                </div>
                 <p> <input name="login" type="text" placeholder="login"/> </p>
                 <p> <input name="password" type="password" placeholder="password"/> </p>
                 <p> <button type="submit"> Submit </button> </p>

@@ -22,7 +22,10 @@ public class AdminController {
     private String db_password;
 
     @GetMapping("/login")
-    public String show_auth_form(Model model) {
+    public String show_auth_form(@RequestParam(value = "invalid_password", required = false) Integer invalid_password,
+                                 Model model)
+    {
+        model.addAttribute("invalid_password", invalid_password);
         return "admin/loginPage";
     }
 
@@ -30,8 +33,8 @@ public class AdminController {
     @PostMapping("/login")
     public String check_form(@RequestParam("login") String input_login,
                              @RequestParam("password") String input_password,
-                             Model model) throws ClassNotFoundException, SQLException {
-
+                             Model model) throws ClassNotFoundException, SQLException
+    {
         //System.out.println("You entered : "+ input_login + ", " + input_password);
 
         Class.forName("com.mysql.jdbc.Driver");
@@ -52,10 +55,11 @@ public class AdminController {
             int access_level = resultSet.getInt("access");
             model.addAttribute("access", access_level);
             System.out.println("access : " + access_level);
+            return "redirect:/news";
         }
 
 
-        return "redirect:/news";
+        return "redirect:/admin/login?invalid_password=1";
     }
 
 
