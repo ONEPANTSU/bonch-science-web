@@ -10,7 +10,7 @@
         <header th:insert="blocks/header :: header" />
         <div class="container mt-5">
             <h1 th:text="${title}"></h1>
-            <div th:each="element : ${posts}" class="alert alert-info mt-2">
+            <div th:each="element : ${posts}" th:data-id="${element.id}" class="alert alert-info mt-2">
                 <h3 th:text="${element.title}" th:href="'/news/' + ${element.id}"/>
                 <h5 th:text="${element.text}"/>
             </div>

@@ -9,11 +9,22 @@ import javax.persistence.Id;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String text;
     private int views;
+
+    public Post(String title, String text){
+        this.title = title;
+        this.text = text;
+    }
+    public Post(Long id, String title, String text){
+        this.id = id;
+        this.title = title;
+        this.text = text;
+    }
+    public Post(){};
 
     public Long getId() {
         return id;
