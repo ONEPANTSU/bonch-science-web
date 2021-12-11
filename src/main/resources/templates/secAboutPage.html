@@ -13,15 +13,10 @@
 <section class="py-5 text-left container">
   <div>
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 class="fw-light" th:text="${title}" />
       <div th:each="element : ${sec}" class="lead" >
+        <h1 class="fw-light" th:text="${element.title}" />
         <h3 th:text="${element.full_name}" />
         <p th:text="${element.description}"/>
-      </div>
-      <div th:each="ach : ${achievments}"  class="lead">
-        <h2 th:text = "Достижения"/>
-        <p th:text = "${ach.title}"/>
-
       </div>
     </div>
   </div>

@@ -1,9 +1,8 @@
 package BSWeb.repo;
 
-import BSWeb.models.Achievments;
-import BSWeb.models.Sec_achieve;
+import BSWeb.models.Achievements;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AchievmentsRepository extends CrudRepository<Achievments, Long> {
+public interface AchievmentsRepository extends CrudRepository<Achievements, Long> {
 
 }
