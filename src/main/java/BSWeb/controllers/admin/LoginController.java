@@ -1,7 +1,5 @@
 package BSWeb.controllers.admin;
 
-import BSWeb.models.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,8 +23,10 @@ public class LoginController {
     @Value("${spring.datasource.driver-class-name}")
     private String db_driver_class_name;
 
-    @Autowired
-    private User user;
+    private Integer access_level = null;
+    public Integer getAccess_level() {
+        return access_level;
+    }
 
     @GetMapping("/login")
     public String show_auth_form(@RequestParam(value = "invalid_password", required = false) Integer invalid_password,
@@ -53,9 +53,10 @@ public class LoginController {
 
         ResultSet resultSet = statement.executeQuery(sql_query);
 
-        if (resultSet.next()) {
+        while (resultSet.next()) {
 
-            user.setAccess_level(resultSet.getInt("access"));
+            this.access_level = resultSet.getInt("access");
+            System.out.println("access : " + this.access_level);
             return "redirect:/admin/panel";
         }
 
