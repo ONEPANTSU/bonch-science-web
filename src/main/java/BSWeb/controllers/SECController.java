@@ -58,7 +58,7 @@ public class SECController {
     }
 
     @PostMapping("")
-    public String addNews(@RequestParam("title") String title,
+    public String addSEC(@RequestParam("title") String title,
                           @RequestParam("full_name") String full_name,
                           @RequestParam("description") String description,
                           Model model) {
@@ -68,7 +68,7 @@ public class SECController {
     }
 
     @PostMapping("/edit")
-    public String editNews(@RequestParam("id") Long id,
+    public String editSEC(@RequestParam("id") Long id,
                            @RequestParam("title") String title,
                            @RequestParam("full_name") String full_name,
                            @RequestParam("description") String description,
@@ -82,7 +82,7 @@ public class SECController {
     }
 
     @PostMapping("/delete")
-    public String deleteNews(@RequestParam("id") Long id,
+    public String deleteSEC(@RequestParam("id") Long id,
                              Model model){
         if(secRepository.existsById(id)) {
             secRepository.deleteById(id);
