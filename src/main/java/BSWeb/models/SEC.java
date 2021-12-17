@@ -7,6 +7,20 @@ import javax.persistence.Id;
 
 @Entity
 public class SEC {
+    public SEC(){}
+
+    public SEC(String title, String full_name, String description) {
+        this.title = title;
+        this.full_name = full_name;
+        this.description = description;
+    }
+
+    public SEC(Long id, String title, String full_name, String description) {
+        this.id = id;
+        this.title = title;
+        this.full_name = full_name;
+        this.description = description;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
