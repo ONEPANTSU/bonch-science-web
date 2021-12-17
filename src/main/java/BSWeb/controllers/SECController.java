@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collections;
 
 @Controller
+@RequestMapping("/scientific-and-educational-centers")
 public class SECController {
 
     @Autowired
@@ -19,7 +21,7 @@ public class SECController {
     @Autowired
     private SECAchievmentsRepository achRepository;
 
-    @GetMapping(value = "/scientific-and-educational-centers")
+    @GetMapping("")
     public String sec(Model model) {
         Iterable<SEC> sec = secRepository.findAll();
         model.addAttribute("sec", sec);
@@ -28,7 +30,7 @@ public class SECController {
         return "secPage";
     }
 
-    @GetMapping(value = "/scientific-and-educational-centers/ТИОС")
+    @GetMapping("/ТИОС")
     public String secAbout1(Model model) {
         Long id = 1L;
         Iterable<SEC> sec = secRepository.findAllById(Collections.singleton(id));
@@ -40,7 +42,7 @@ public class SECController {
         return "secAboutPage";
     }
 
-    @GetMapping(value = "/scientific-and-educational-centers/БИС")
+    @GetMapping("/БИС")
     public String secAbout2(Model model) {
         Long id = 2L;
         Iterable<SEC> sec = secRepository.findAllById(Collections.singleton(id));
