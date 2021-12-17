@@ -1,5 +1,7 @@
-package BSWeb.controllers;
+package BSWeb.controllers.admin;
 
+import BSWeb.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminController {
+public class LoginController {
 
     @Value("${spring.datasource.url}")
     private String db_url;
@@ -20,6 +22,11 @@ public class AdminController {
     private String db_username;
     @Value("${spring.datasource.password}")
     private String db_password;
+    @Value("${spring.datasource.driver-class-name}")
+    private String db_driver_class_name;
+
+    @Autowired
+    private User user;
 
     @GetMapping("/login")
     public String show_auth_form(@RequestParam(value = "invalid_password", required = false) Integer invalid_password,
@@ -35,9 +42,8 @@ public class AdminController {
                              @RequestParam("password") String input_password,
                              Model model) throws ClassNotFoundException, SQLException
     {
-        //System.out.println("You entered : "+ input_login + ", " + input_password);
 
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName(db_driver_class_name);
         Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
         Statement statement = connection.createStatement();
 
@@ -45,19 +51,13 @@ public class AdminController {
                 "WHERE login='" + input_login + "' AND " +
                 "password='" + input_password + "';";
 
-        //System.out.println(sql_query);
-
         ResultSet resultSet = statement.executeQuery(sql_query);
-        int columns = resultSet.getMetaData().getColumnCount();
 
-        while (resultSet.next()) {
+        if (resultSet.next()) {
 
-            int access_level = resultSet.getInt("access");
-            model.addAttribute("access", access_level);
-            System.out.println("access : " + access_level);
-            return "redirect:/news";
+            user.setAccess_level(resultSet.getInt("access"));
+            return "redirect:/admin/panel";
         }
-
 
         return "redirect:/admin/login?invalid_password=1";
     }
