@@ -36,7 +36,6 @@ public class LoginController {
         return "admin/loginPage";
     }
 
-    // защита от sql-инъекций не реализована!
     @PostMapping("/login")
     public String check_form(@RequestParam("login") String input_login,
                              @RequestParam("password") String input_password,
@@ -45,16 +44,16 @@ public class LoginController {
 
         Class.forName(db_driver_class_name);
         Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
-        Statement statement = connection.createStatement();
 
-        String sql_query = "SELECT access FROM admins " +
-                "WHERE login='" + input_login + "' AND " +
-                "password='" + input_password + "';";
+        String sql_query = "SELECT access FROM admins WHERE login = ? AND password = ?";
+        PreparedStatement statement = connection.prepareStatement(sql_query);
 
-        ResultSet resultSet = statement.executeQuery(sql_query);
+        statement.setString(1,input_login);
+        statement.setString(2,input_password);
+
+        ResultSet resultSet = statement.executeQuery();
 
         if (resultSet.next()) {
-
             user.setAccess_level(resultSet.getInt("access"));
             return "redirect:/admin/panel";
         }
