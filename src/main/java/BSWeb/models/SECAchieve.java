@@ -1,19 +1,18 @@
 package BSWeb.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class SECAchieve {
     @Id
     private Long id;
+    private Long sec_id;
     private Long achieve_id;
 
     SECAchieve(){}
-    SECAchieve(Long id, Long achieve_id){
+    SECAchieve(Long id, Long sec_id, Long achieve_id){
         this.id = id;
+        this.sec_id = sec_id;
         this.achieve_id = achieve_id;
 
     }
@@ -33,4 +32,8 @@ public class SECAchieve {
     public void setAchieve_id(Long achieve_id) {
         this.achieve_id = achieve_id;
     }
+
+    public Long getSec_id() { return sec_id; }
+
+    public void setSec_id(Long sec_id) { this.sec_id = sec_id; }
 }

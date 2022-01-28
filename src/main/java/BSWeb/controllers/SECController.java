@@ -1,9 +1,9 @@
 package BSWeb.controllers;
 
 import BSWeb.models.SEC;
-import BSWeb.models.Achievments;
+import BSWeb.models.Achievements;
 import BSWeb.models.SECAchieve;
-import BSWeb.repo.AchievmentsRepository;
+import BSWeb.repo.AchievementsRepository;
 import BSWeb.repo.SECAchieveRepository;
 import BSWeb.repo.SECRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Optional;
 
 @Controller
@@ -25,7 +24,7 @@ public class SECController {
     @Autowired
     private SECRepository secRepository;
     @Autowired
-    private AchievmentsRepository achRepository;
+    private AchievementsRepository achRepository;
     @Autowired
     private SECAchieveRepository secAchieveRepository;
 
@@ -38,18 +37,20 @@ public class SECController {
         return "secPage";
     }
 
-    private void getAllSECPropertiesFromReposAndSetThemToModelByID(Model model, Long id){
+    private void prepareModelByID(Model model, Long id){
         Optional<SEC> sec = secRepository.findById(id);  // fullname, decription
-        Iterable<SECAchieve> secAch = secAchieveRepository.findAllById(Collections.singleton(id)); 
+        Iterable<SECAchieve> secAch = secAchieveRepository.findAll();
 
         // пока что так...
         var achIDs = new ArrayList<Long>();
 
         for (var item : secAch){
-            achIDs.add(item.getAchieve_id());
+            if (item.getSec_id() == id) {
+                achIDs.add(item.getAchieve_id());
+            }
         }
 
-        Iterable<Achievments> ach = achRepository.findAllById(achIDs);
+        Iterable<Achievements> ach = achRepository.findAllById(achIDs);
 
         if (sec.isPresent()) {
             model.addAttribute("sec", sec.get());
@@ -61,14 +62,14 @@ public class SECController {
     @GetMapping("/ТИОС")
     public String secAbout1(Model model) {
         Long id = 1L;
-        getAllSECPropertiesFromReposAndSetThemToModelByID(model, id);
+        prepareModelByID(model, id);
         return "secAboutPage";
     }
 
     @GetMapping("/БИС")
     public String secAbout2(Model model) {
         Long id = 2L;
-        getAllSECPropertiesFromReposAndSetThemToModelByID(model, id);
+        prepareModelByID(model, id);
         return "secAboutPage";
     }
 
