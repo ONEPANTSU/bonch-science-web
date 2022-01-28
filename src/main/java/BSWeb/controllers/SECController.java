@@ -1,9 +1,10 @@
 package BSWeb.controllers;
 
-import BSWeb.models.Post;
 import BSWeb.models.SEC;
 import BSWeb.models.Achievments;
-import BSWeb.repo.SECAchievmentsRepository;
+import BSWeb.models.SECAchieve;
+import BSWeb.repo.AchievmentsRepository;
+import BSWeb.repo.SECAchieveRepository;
 import BSWeb.repo.SECRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/scientific-and-educational-centers")
@@ -22,7 +25,9 @@ public class SECController {
     @Autowired
     private SECRepository secRepository;
     @Autowired
-    private SECAchievmentsRepository achRepository;
+    private AchievmentsRepository achRepository;
+    @Autowired
+    private SECAchieveRepository secAchieveRepository;
 
     @GetMapping("")
     public String sec(Model model) {
@@ -33,27 +38,37 @@ public class SECController {
         return "secPage";
     }
 
+    private void getAllSECPropertiesFromReposAndSetThemToModelByID(Model model, Long id){
+        Optional<SEC> sec = secRepository.findById(id);  // fullname, decription
+        Iterable<SECAchieve> secAch = secAchieveRepository.findAllById(Collections.singleton(id)); 
+
+        // пока что так...
+        var achIDs = new ArrayList<Long>();
+
+        for (var item : secAch){
+            achIDs.add(item.getAchieve_id());
+        }
+
+        Iterable<Achievments> ach = achRepository.findAllById(achIDs);
+
+        if (sec.isPresent()) {
+            model.addAttribute("sec", sec.get());
+            model.addAttribute("title", sec.get().getTitle());
+        }
+        model.addAttribute("ach", ach);
+    }
+
     @GetMapping("/ТИОС")
     public String secAbout1(Model model) {
         Long id = 1L;
-        Iterable<SEC> sec = secRepository.findAllById(Collections.singleton(id));
-        Iterable<Achievments> ach = achRepository.findAllById(Collections.singleton(id));
-        model.addAttribute("sec", sec);
-        model.addAttribute("title", "ТИОС");
-        model.addAttribute("ach", ach);
-
+        getAllSECPropertiesFromReposAndSetThemToModelByID(model, id);
         return "secAboutPage";
     }
 
     @GetMapping("/БИС")
     public String secAbout2(Model model) {
         Long id = 2L;
-        Iterable<SEC> sec = secRepository.findAllById(Collections.singleton(id));
-        Iterable<Achievments> ach = achRepository.findAllById(Collections.singleton(id));
-        model.addAttribute("sec", sec);
-        model.addAttribute("title", "БИС");
-        model.addAttribute("ach", ach);
-
+        getAllSECPropertiesFromReposAndSetThemToModelByID(model, id);
         return "secAboutPage";
     }
 
