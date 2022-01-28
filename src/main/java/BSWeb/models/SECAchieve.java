@@ -1,22 +1,21 @@
 package BSWeb.models;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Achievments {
+public class SECAchieve {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title;
+    private Long achieve_id;
 
-    Achievments(){}
-    Achievments(Long id, String title){
+    SECAchieve(){}
+    SECAchieve(Long id, Long achieve_id){
         this.id = id;
-        this.title = title;
+        this.achieve_id = achieve_id;
+
     }
 
     public Long getId() {
@@ -27,11 +26,11 @@ public class Achievments {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public Long getAchieve_id() {
+        return achieve_id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setAchieve_id(Long achieve_id) {
+        this.achieve_id = achieve_id;
     }
 }
