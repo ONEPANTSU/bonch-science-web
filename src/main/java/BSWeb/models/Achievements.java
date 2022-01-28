@@ -7,14 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Achievments {
+public class Achievements {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
 
-    Achievments(){}
-    Achievments(Long id, String title){
+    Achievements(){}
+    Achievements(Long id, String title){
         this.id = id;
         this.title = title;
     }
