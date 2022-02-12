@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        * {box-sizing: border-box;}
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+            margin: 0 auto;
+        }
+        .form-container input[type=text], .form-container input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+        .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+        .form-container .btn {
+            background-color: #1976D2;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom:10px;
+            opacity: 0.8;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<header th:insert="blocks/header :: header" />
+<div th:each="element : ${event}" class="form" id="myForm">
+    <form action="#" class="form-container" method="post">
+        <h1>Регистрация</h1>
+        <h2 th:text="${element.title}" />
+        <label th:for="name"><b>Имя</b></label>
+        <input name = "name" type="text" placeholder="Ваше имя" required>
+
+        <label th:for="vk"><b>Вк</b></label>
+        <input name = "vk" type="text" placeholder="Ваш vk" required>
+
+        <button type="submit" class="btn">Отправить</button>
+    </form>
+</div>
+</body>
+</html>

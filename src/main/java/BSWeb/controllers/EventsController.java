@@ -6,12 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.*;
+import java.util.Collection;
+import java.util.Collections;
 
 @Controller
 public class EventsController {
@@ -27,32 +26,46 @@ public class EventsController {
     private EventRepository eventRepository;
 
     @GetMapping("/events")
-    public String registration(Model model) {
+    public String event(Model model) {
         Iterable<Event> event = eventRepository.findAll();
         model.addAttribute("event", event);
         model.addAttribute("name","Мероприятия");
         return "eventsPage";
     }
 
-    @PostMapping("/events")
+    @GetMapping("/eventsRegistrationPage/{id}")
+    public String registration(Model model, @PathVariable String id) {
+        Long idLong = Long.parseLong(id);
+        Iterable<Event> event = eventRepository.findAllById(Collections.singleton(idLong));
+        model.addAttribute("event", event);
+        return "eventsRegistrationPage";
+    }
+
+    @PostMapping("/eventsRegistrationPage/{id}")
     public String check_form(@RequestParam("name") String input_name,
-                             @RequestParam("vk") String input_vk,
+                             @RequestParam("vk") String input_vk, @PathVariable("id") String id,
                              Model model) throws ClassNotFoundException, SQLException
     {
-        System.out.println("You entered : "+ input_name + ", " + input_vk);
+        /*System.out.println("You entered : "+ input_name + ", " + input_vk + "," + id);*/
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
         Statement statement = connection.createStatement();
 
-        String sql_update = "INSERT INTO registration (name, vk) VALUES (" + "'" + input_name + "'" + "," + "'"
-                                                                        + input_vk + "'" + ")";
-        String sql_query = "SELECT * FROM registration";
+        Integer idInt = Integer.parseInt(id);
+
+        String sql_update = "INSERT INTO registration (name, vk, id) VALUES ("
+                + "'" + input_name + "'" + ","
+                + "'" + input_vk + "'" + ","
+                + "'" + idInt + "'" +
+                ")";
+        /*String sql_query = "SELECT * FROM registration";
         statement.executeUpdate(sql_update);
         ResultSet resultSet = statement.executeQuery(sql_query);
-        /*while (resultSet.next()) {
-            System.out.println(resultSet.getString("name"));
-            System.out.println(resultSet.getString("vk"));
+        while (resultSet.next()) {
+            System.out.print(resultSet.getString("name") + " ");
+            System.out.print(resultSet.getString("vk") + " ");
+            System.out.print(resultSet.getString("id") + " ");
         }*/
 
 
