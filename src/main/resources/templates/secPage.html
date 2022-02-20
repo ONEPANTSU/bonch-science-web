@@ -12,13 +12,26 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header" class="headers" />
-<div class="container mt-5">
-    <h1 th:text="${title}"></h1>
+<section class="py-5 text-center container-fluid background-image-2" style="height: 850px;">
+    <div class="row py-lg-5">
+
+        <div class="d-flex align-items-end flex-column bd-highlight mb-0 pe-0">
+            <p class="font-1">ХАЛЯ</p>
+            <p class="font-2">ХАЛЯВА</p>
+            <p class="font-3">Много халявы</p>
+            <p class="font-4">Мегаультрахорош</p>
+        </div>
+    </div>
+</section>
+<section class="container-fluid text-center background pb-5" style="height: auto;">
+<div class="container ">
+    <h1 th:text="${title}" class="font-color pt-5 pb-3"></h1>
     <div th:each="element : ${sec}" class="alert alert-info mt-2" >
         <h3 th:text="${element.title}" />
         <h5 th:text="${element.full_name}"/>
         <a th:text="Подробнее" th:href="'/scientific-and-educational-centers/' + ${element.title}" />
     </div>
 </div>
+</section>
 </body>
 </html>
