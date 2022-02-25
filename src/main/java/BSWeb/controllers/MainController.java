@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String greeting(Model model) {
         model.addAttribute("title", "Bonch-Science");
         model.addAttribute("description", "Комитет по научной работе СПбГУТ");
