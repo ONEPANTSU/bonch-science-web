@@ -1,8 +1,10 @@
 .headers{
 	background-color: #2d0156;
+	z-index: 1;
 }
 .nav-border{
 	background-color: #20003d;
 	margin-top: 2px;
+	float: clear;
 	
 }

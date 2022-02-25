@@ -80,7 +80,7 @@
         document.getElementById("myForm").style.display = "none";
     }
 </script>
-<section class="py-5 text-center container-fluid background-image-2" style="height: 850px;">
+<!--<section class="py-5 text-center container-fluid background-image-2" style="height: 850px;">
     <div class="row py-lg-5">
 
         <div class="d-flex align-items-end flex-column bd-highlight mb-0 pe-0">
@@ -91,14 +91,22 @@
         </div>
     </div>
 </section>
-<section class="container-fluid text-center background pb-5" style="height: auto;">
+-->
+<section class="container-fluid text-center background-event pb-5" style="height: auto;">
 <div class="container ">
     <h1 th:text="${name} " class="font-color pt-5 pb-3"></h1>
-    <div th:each="element : ${event}" class="alert alert-info mt-2" >
-        <h3 th:text="${element.title}" />
-        <h5 th:text="${element.text}"/>
-        <a th:text="${element.date}" />
-    </div>
+    <article th:each="element : ${event}" class="alert background-event-block mt-2 mb-5" >
+        <div class="poster">
+            <img src="/css/image_13.png" alt="">
+        </div>
+        <div class="info">
+            <h3 th:text="${element.title}" />
+            <blockquote >
+                <p th:text="${element.text}"/>
+                <a th:text="${element.date}" />
+            </blockquote>
+        </div>
+    </article>
     <button class="open-button" onclick="openForm()">Зарегистрироваться на мероприятие</button>
     <div class="form-popup" id="myForm">
         <form action="#" class="form-container" method="post">
