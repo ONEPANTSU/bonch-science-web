@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: 79063
+Build-Jdk: 15
+Implementation-Title: BSWeb
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: BSWeb
+Main-Class: ${start-class}
+
