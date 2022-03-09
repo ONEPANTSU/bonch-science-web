@@ -8,7 +8,8 @@
     <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro/style.css}" />
     <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro-Bold/style.css}" />
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/header.css}" />
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/section.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-sec.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-fonts.css}" />
 </head>
 <body>
 <header th:insert="blocks/header :: header" class="headers" />
@@ -30,10 +31,10 @@
 
     <article th:each="element : ${sec}" class=" background-sec-block mt-2 mb-5" >
         <div class="poster-sec">
-            <img src="/css/image_13.png" class="img-sec-poster" alt="">
+            <img src="/css/pictures/image_13.png" class="img-sec-poster" alt="">
         </div>
         <div class="info">
-        <h3 th:text="${element.title}" />
+            <h3 th:text="${element.title}" />
            <blockquote>
                 <p th:text="${element.full_name}"/>
                 <a th:text="Подробнее" th:href="'/scientific-and-educational-centers/' + ${element.title}" />

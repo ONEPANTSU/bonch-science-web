@@ -8,7 +8,9 @@
         <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro/style.css}" />
         <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro-Bold/style.css}" />
         <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/header.css}" />
-        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/section.css}" />
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-news.css}" />
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-fonts.css}" />
+
     </head>
     <body>
         <header th:insert="blocks/header :: header" class="headers" />
@@ -29,7 +31,7 @@
             <h1 th:text="${title}" class="font-color pt-5 pb-3 mb-4 "></h1>
             <article th:each="element : ${posts}" th:data-id="${element.id}" class="alert background-news-block mt-2 mb-5">
                 <div class="poster">
-                    <img src="/css/image_13.png" alt="">
+                    <img src="/css/pictures/image_13.png" alt="" class="img-news-poster">
                 </div>
                 <div class="info">
 

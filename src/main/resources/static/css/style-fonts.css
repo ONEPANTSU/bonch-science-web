@@ -1,0 +1,51 @@
+.font-1{
+	font-family: 'GothamPro', sans-serif;
+	color: #3b1062;
+	font-size: 175px;
+	padding-right: 0;
+	font-weight: bold;
+	height: 200px;
+	width: auto;
+	
+}
+
+.font-1{
+	font-family: 'GothamPro', sans-serif;
+	color: #3b1062;
+	font-size: 175px;
+	padding-right: 0;
+	font-weight: bold;
+	height: 200px;
+	width: auto;
+	
+}
+.font-2{
+	font-family: 'GothamPro', sans-serif;
+	color: #fff;
+	font-size: 125px;
+	padding-right: 5px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.font-3{
+	font-family: 'GothamPro', sans-serif;
+	color: #fff;
+	font-size: 75px;
+	padding-right: 5px;
+	margin-bottom: 5px;
+}
+.font-4{
+	font-family: 'GothamPro', sans-serif;
+	color: #fff;
+	font-size: 75px;
+	padding-right: 5px;
+	margin-bottom: 5px;
+	
+}
+.font-color{
+	color: white;
+}
+
+.font{
+	font-size: 25px;
+}

@@ -8,7 +8,8 @@
     <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro/style.css}" />
     <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro-Bold/style.css}" />
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/header.css}" />
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/section.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-events.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-fonts.css}" />
     <style>
         body {font-family: Arial, Helvetica, sans-serif;}
         * {box-sizing: border-box;}
@@ -71,16 +72,26 @@
     </style>
 </head>
 <body>
-<header th:insert="blocks/header :: header" />
-<div class="container mt-5">
-    <h1 th:text="${name}"></h1>
-    <div th:each="element : ${event}" class="alert alert-info mt-2" >
-        <h3 th:text="${element.title}" />
-        <h5 th:text="${element.text}"/>
-        <a th:text="${element.date}" />
-        <div>
-            <a th:href = "'/eventsRegistrationPage/' + ${element.id}">Регистрация</a>
+<header th:insert="blocks/header :: header" class="headers" />
+
+<section class="container-fluid text-center background-event pb-5" style="height: auto;">
+<div class="container ">
+    <h1 th:text="${name}" class="font-color pt-5 pb-3"></h1>
+
+    <article th:each="element : ${event}" class=" background-event-block mt-2 mb-5" >
+        <div class="poster-event">
+            <img src="/css/pictures/image_13.png" class="img-event-poster" alt="">
         </div>
+        <div class="info">
+            <h3 th:text="${element.title}" />
+            <blockquote>
+                <p th:text="${element.text}"/>
+                <p th:text="${element.date}" />
+                <a th:href = "'/eventsRegistrationPage/' + ${element.id}">Регистрация</a>
+            </blockquote>
+        </div>
+    </article>
+
     </div>
 </div>
 </section>
