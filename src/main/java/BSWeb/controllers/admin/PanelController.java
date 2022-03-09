@@ -20,11 +20,13 @@ public class PanelController {
         if (user.getAccess_level() == null){
             return "redirect:/admin/login";
         }
-        else if ((Integer) user.getAccess_level() == 0){
-            return "admin/panelPage";
-        }
-        else {
-            return "redirect:/news";
+
+        switch ((Integer) user.getAccess_level()) {
+            case 0: // writer
+            case 1: // leader
+                return "admin/panelPage";
+            default:
+                return "redirect:/admin/login";
         }
     }
 

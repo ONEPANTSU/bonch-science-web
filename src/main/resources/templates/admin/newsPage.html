@@ -8,12 +8,22 @@
         <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro/style.css}" />
         <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro-Bold/style.css}" />
         <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/header.css}" />
-        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-news.css}" />
-        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-fonts.css}" />
-
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/section.css}" />
     </head>
     <body>
         <header th:insert="blocks/header :: header" class="headers" />
+
+        <div align="center">
+            <form method="POST" action="/news">
+                <h1> Добавить новость </h1>
+
+                <p> <input name="title" type="text" placeholder="title"/> </p>
+                <p> <input name="text" type="text" placeholder="text"/> </p>
+                <p> <button type="submit"> Опубликовать </button> </p>
+
+            </form>
+        </div>
+
 
         <!--<section class="py-5 text-center container-fluid background-image-2" style="height: 850px;">
             <div class="row py-lg-5">
@@ -32,7 +42,7 @@
             <h1 th:text="${title}" class="font-color pt-5 pb-3 mb-4 "></h1>
             <article th:each="element : ${posts}" th:data-id="${element.id}" class="alert background-news-block mt-2 mb-5">
                 <div class="poster">
-                    <img src="/css/pictures/image_13.png" alt="" class="img-news-poster">
+                    <img src="/css/image_13.png" alt="">
                 </div>
                 <div class="info">
 
@@ -40,6 +50,11 @@
                     <blockquote >
                         <p th:text="${element.text}" class="" >
                     </blockquote>
+
+                    <form method="POST" action="/news/delete?id=${element.id}">
+                        <p> <button type="submit"> Удалить новость </button> </p>
+                    </form>
+
                 </div>
             </article>
         </div>

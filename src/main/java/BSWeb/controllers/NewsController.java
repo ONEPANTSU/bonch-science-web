@@ -1,6 +1,7 @@
 package BSWeb.controllers;
 
 import BSWeb.models.Post;
+import BSWeb.models.User;
 import BSWeb.repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/news")
 public class NewsController {
+    @Autowired
+    User user;
 
     @Autowired
     private PostRepository postRepository;
@@ -23,7 +26,16 @@ public class NewsController {
         model.addAttribute("posts", posts);
         model.addAttribute("title", "Новости от Bonch-Science!");
 
-        return "newsPage";
+        if (user.getAccess_level() == null){
+            return "newsPage";
+        }
+        switch ((Integer) user.getAccess_level()) {
+            case 0: // writer
+            case 1: // leader
+                return "admin/newsPage";
+            default:
+                return "newsPage";
+        }
     }
 
     /**
