@@ -1,0 +1,47 @@
+html , body{
+	width: 100%;
+	height: 100%;
+	margin-bottom: 0;
+}
+.background{
+	background-color: #2f0058;
+	box-shadow: inset 0 0 6px;
+	background-size: cover;
+	box-sizing: border-box;
+	width: 100%;
+	position: relative;
+
+}
+
+.text-block{
+    background-color: hsl(270,100%,13%,0.8);
+    padding: 15px;
+    box-shadow:  0 0 6px black;
+
+}
+
+.text-style{
+    text-align: justify;
+}
+
+.block-ach{
+    background-color: hsl(270,100%,13%,0.8);
+    padding: 51px;
+    padding-top: ;
+    padding-left: ;
+    padding-right: ;
+    box-shadow:  0 0 6px black;
+    border-radius: 10px;
+}
+
+.block-sec{
+    background-color: hsl(270,100%,13%,0.8);
+    padding: 51px;
+    box-shadow:  0 0 6px black;
+    border-radius: 10px;
+}
+
+.p-block{
+    display: inline-block;
+    border-bottom: 1px solid white;
+}

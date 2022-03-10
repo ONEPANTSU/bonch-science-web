@@ -8,24 +8,31 @@
   <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro/style.css}" />
   <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro-Bold/style.css}" />
   <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/header.css}" />
-  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/section.css}" />
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/old-style-code(for_backup).css}" />
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-fonts.css}" />
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-secAbout.css}" />
 </head>
 <body>
 
 <header th:insert="blocks/header :: header" class="headers"/>
 
 
-<section class="py-5 text-left container">
+<section class="py-5 text-left  background ">
   <div>
-    <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 class="fw-light" th:text="${title}" />
-      <div th:each="element : ${sec}" class="lead" >
-        <h3 th:text="${element.full_name}" />
-        <p th:text="${element.description}"/>
+    <h1 class="font-color text-center mb-3" th:text="${title}" />
+    <div class="col-lg-6 col-md-8 mx-auto font-color ">
+      <div class="block-sec">
+        <div th:each="element : ${sec}" class="lead " >
+          <h3 th:text="${element.full_name}" class="pb-4 text-left" />
+          <p th:text="${element.description}" class="text-style"/>
+        </div>
       </div>
-      <h2 th:text = "Достижения"/>
-      <div th:each="element : ${ach}" class="lead">
-        <p th:text = "${element.title}"/>
+
+      <div class="block-ach mt-4">
+        <h2 th:text = "Достижения" class="text-left pb-2"/>
+        <div th:each="element : ${ach}" class="lead p-ach">
+          <p th:text = "${element.title}" class="p-block" />
+        </div>
       </div>
     </div>
   </div>
