@@ -1,7 +1,6 @@
 package BSWeb.controllers;
 
-import BSWeb.models.Post;
-import BSWeb.models.User;
+import BSWeb.models.*;
 import BSWeb.repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/news")
@@ -38,6 +42,19 @@ public class NewsController {
         }
     }
 
+    @GetMapping("/edit")
+    public String editGetNews(@RequestParam("id") Long id, Model model){
+        if (user.getAccess_level() == null){  // проверка роли
+            return "redirect:/news";
+        }
+
+        Iterable<Post> posts = postRepository.findAllById(Collections.singleton(id));
+        model.addAttribute("posts", posts);
+        model.addAttribute("title", "Редактирование новостей");
+
+        return "admin/newsEditPage";
+    }
+
     /**
      * Создать новую новость
      * @param title - Заголовок новости
@@ -47,9 +64,13 @@ public class NewsController {
     public String addNews(@RequestParam("title") String title,
                           @RequestParam("text") String text,
                           Model model) {
-        Post post = new Post(title, text);
-        postRepository.save(post);
-        return "redirect:news";
+
+        if (user.getAccess_level() != null){  // проверка роли
+            Post post = new Post(title, text);
+            postRepository.save(post);
+        }
+
+        return "redirect:/news";
     }
 
     /**
@@ -63,11 +84,15 @@ public class NewsController {
                            @RequestParam("title") String title,
                            @RequestParam("text") String text,
                            Model model){
-        if(postRepository.existsById(id)) {
-            Post post = new Post(id, title, text);
-            postRepository.save(post);
 
+        if (user.getAccess_level() != null){  // проверка роли
+            if(postRepository.existsById(id)) {
+                Post post = new Post(id, title, text);
+                postRepository.save(post);
+
+            }
         }
+
         return "redirect:/news";
     }
 
@@ -78,9 +103,13 @@ public class NewsController {
     @PostMapping("/delete")
     public String deleteNews(@RequestParam("id") Long id,
                            Model model){
-        if(postRepository.existsById(id)) {
-            postRepository.deleteById(id);
+
+        if (user.getAccess_level() != null){  // проверка роли
+            if(postRepository.existsById(id)) {
+                postRepository.deleteById(id);
+            }
         }
+
         return "redirect:/news";
     }
 

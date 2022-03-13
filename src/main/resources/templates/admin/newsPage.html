@@ -24,7 +24,6 @@
             </form>
         </div>
 
-
         <!--<section class="py-5 text-center container-fluid background-image-2" style="height: 850px;">
             <div class="row py-lg-5">
 
@@ -51,9 +50,12 @@
                         <p th:text="${element.text}" class="" >
                     </blockquote>
 
-                    <form method="POST" action="/news/delete?id=${element.id}">
-                        <p> <button type="submit"> Удалить новость </button> </p>
+                    <a th:href="@{'/news/edit?id=' + ${element.id}}"><button> Редактировать новость </button></a>
+
+                    <form method="POST"  th:action="'/news/delete?id=' + ${element.id}">
+                        <button type="submit"> Удалить новость </button>
                     </form>
+
 
                 </div>
             </article>

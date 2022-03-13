@@ -55,7 +55,7 @@ public class LoginController {
 
         if (resultSet.next()) {
             user.setAccess_level(resultSet.getInt("access"));
-            return "redirect:/admin/panel";
+            return "redirect:/news";
         }
 
         return "redirect:/admin/login?invalid_password=1";
