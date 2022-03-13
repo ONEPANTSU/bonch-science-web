@@ -11,11 +11,17 @@ public class Achievements {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Long secid;
     private String title;
 
-    Achievements(){}
-    Achievements(Long id, String title){
+    public Achievements(){}
+    public Achievements(Long id, Long secid, String title){
         this.id = id;
+        this.secid = secid;
+        this.title = title;
+    }
+    public Achievements(Long secid, String title){
+        this.secid = secid;
         this.title = title;
     }
 
@@ -33,5 +39,13 @@ public class Achievements {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Long getSecid() {
+        return secid;
+    }
+
+    public void setSecid(Long secid) {
+        this.secid = secid;
     }
 }
