@@ -11,6 +11,9 @@ public class User {
     public void setAccess_level(int value){
         access_level = value;
     }
+    public void logout(){
+        access_level = null;
+    }
     public Integer getAccess_level() {
         return access_level;
     }

@@ -36,6 +36,12 @@ public class LoginController {
         return "admin/loginPage";
     }
 
+    @GetMapping("/logout")
+    public String to_logout(Model model) {
+        user.logout();
+        return "redirect:/news";
+    }
+
     @PostMapping("/login")
     public String check_form(@RequestParam("login") String input_login,
                              @RequestParam("password") String input_password,
