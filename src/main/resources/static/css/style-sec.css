@@ -11,8 +11,9 @@
     margin: 15px 0;
     font-size: 0;
     position: relative;
-    height: 230px;
-    
+    height: 210px;
+    box-shadow:  0 0 6px black;
+    border-radius: 15px;
 }
 .img-sec-poster{
 	max-width: 200px;

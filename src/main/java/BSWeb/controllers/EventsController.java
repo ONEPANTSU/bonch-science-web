@@ -27,7 +27,7 @@ public class EventsController {
 
     @GetMapping("/events")
     public String event(Model model) {
-        Iterable<Event> event = eventRepository.findAll();
+        Iterable<Event> event = eventRepository.findAllByOrderByIdDesc();
         model.addAttribute("event", event);
         model.addAttribute("name","Мероприятия");
         return "eventsPage";

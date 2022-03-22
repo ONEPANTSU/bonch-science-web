@@ -19,7 +19,7 @@ public class NewsController {
 
     @GetMapping("")
     public String news(Model model) {
-        Iterable<Post> posts = postRepository.findAll();
+        Iterable<Post> posts = postRepository.findAllByOrderByIdDesc();
         model.addAttribute("posts", posts);
         model.addAttribute("title", "Новости от Bonch-Science!");
 
@@ -71,4 +71,5 @@ public class NewsController {
         }
         return "redirect:/news";
     }
+
 }

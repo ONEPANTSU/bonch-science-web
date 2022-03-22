@@ -12,6 +12,8 @@
     margin: 15px 0;
     font-size: 0;
     position: relative;
+    box-shadow:  0 0 6px black;
+    border-radius: 15px;
 
 }
 .img-event-poster{
