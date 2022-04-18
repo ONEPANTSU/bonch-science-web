@@ -21,7 +21,6 @@ public class MainController {
         return new RedirectView("/home");
     }
 
-
     @GetMapping("/home")
     public String greeting(Model model) {
         model.addAttribute("title", "Bonch-Science");
@@ -35,5 +34,12 @@ public class MainController {
 
         return "aboutPage";
     }
+
+
+    @GetMapping("/hackathon")
+    public String hackathon(Model model) {
+        return "hackathon/hackathonPage";
+    }
+
 
 }
