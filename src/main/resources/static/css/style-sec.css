@@ -5,7 +5,7 @@
 	
 }
 .background-sec-block{
-	background-color: hsl(270,100%,13%,0.8);
+	background-color: hsl(270,100%,13%);
 	color: white;
 	display: table;
     margin: 15px 0;
