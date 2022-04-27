@@ -15,7 +15,7 @@ html , body{
 }
 
 .text-block{
-    background-color: hsl(270,100%,13%,0.8);
+    background-color: hsl(270,100%,13%);
     padding: 15px;
     box-shadow:  0 0 6px black;
 
@@ -26,17 +26,14 @@ html , body{
 }
 
 .block-ach{
-    background-color: hsl(270,100%,13%,0.8);
+    background-color: hsl(270,100%,13%);
     padding: 51px;
-    padding-top: ;
-    padding-left: ;
-    padding-right: ;
     box-shadow:  0 0 6px black;
     border-radius: 10px;
 }
 
 .block-sec{
-    background-color: hsl(270,100%,13%,0.8);
+    background-color: hsl(270,100%,13%);
     padding: 51px;
     box-shadow:  0 0 6px black;
     border-radius: 10px;
