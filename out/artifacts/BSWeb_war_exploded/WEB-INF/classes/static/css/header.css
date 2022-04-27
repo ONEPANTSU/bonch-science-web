@@ -1,0 +1,21 @@
+.headers{
+	background-color: #2d0156;
+	z-index: 1;
+}
+.nav-border{
+	font-size: 18px;
+	margin-top: 2px;
+	float: clear;
+	
+	
+}
+
+.logo{
+	font-weight: bolder;
+
+}
+
+.font-style{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 700;
+}

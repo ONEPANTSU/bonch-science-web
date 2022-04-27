@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro/style.css}" />
+    <link rel="stylesheet" type = "text/css"  th:href="@{/css/fonts/GothamPro-Bold/style.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-aboutPage.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style-fonts.css}" />
+</head>
+<body>
+    <header th:insert="blocks/header :: header" class="headers"  />
+    <section class="py-5 text-center container-fluid background-image-2" style="height: 850px;">
+        <div class="row py-lg-5">
+
+            <div class="d-flex align-items-end flex-column bd-highlight mb-0 pe-0">
+                <p class="font-1-purpule">НАУ</p>
+                <p class="font-1-white">НАУКА </p>
+                <p class="font-2-aboutPage">МНОГО НАУКИ </p>
+                <p class="font-3">МЕГАУЛЬТРАХОРОШ</p>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid text-center background" style="height: auto;">
+        <div class="container">
+            <h1 class="font-color pt-5 pb-3">Что такое Bonch-Science?</h1>
+            <div class="row">
+                <div class="ps-5 pe-5 mb-5 ">
+                    <p class=" font-color font text-center " >Это не просто комитет, это объединение студентов СПбГУТ, любящих науку.</p>
+                    <p class="text-xl-start font-color font">Мы стараемся оживить научную жизнь нашего университета. Интеллектуальная игра “Что? Где? Когда?”, различные конкурсы научных студенческих работ, проектная деятельность в виде хакатонов - это всё наша работа. </p>
+                    <p class="text-xl-start font-color font">Мы помогаем студентам освоиться в научной среде, организовываем тематические мероприятия и стараемся развивать и продвигать исследовательские работы. Так же мы можем помочь студентам с написанием и публикацией научных статей, с развитием научных проектов, стараемся вызвать интерес у студентов к исследованиям, к изучению чего-то нового и неизведанного и, конечно же, к проблемам современной науки. </p>
+                    <p class="text-xl-start font-color font">BonchScience организует встречи со спикерами из научной сферы. Благодаря таким встречам каждый их участник может узнать полезную и актуальную информацию. </p>
+                    <p class="text-xl-start font-color font">Наш комитет состоит из творческих и эрудированных личностей. В BocnhScience существует несколько отделов, каждый из которых имеет ряд своих собственных обязанностей.
+                        <br><br>
+                        Организационный отдел
+                        <br><br>
+                        Отдел фандрайза
+                        <br><br>
+                        Отдел разработки
+                        <br><br>
+                        SMM-отдел
+                        <br><br>
+                        Отдел дизайна
+                    </p>
+                    <h2 class="font-color pt-5 pb-3">Организационный отдел: </h2>
+                    <p class="text-xl-start font-color font">Продумывание заданий для участников; Проработка таймингов мероприятия; Проработка плана координации активистов; Проработка внешнего вида мероприятия (тематика, мерч, стилистика и т.д.); Общий план мероприятия. Подготовка места к проведению мероприятия; Участие в тестовом прогоне мероприятия; Координация участников мероприятия; Ответы на вопросы участников; Реализация мероприятия в соответствии со сценарием. </p>
+                    <h2 class="font-color pt-5 pb-3">Отдел фандрайза: </h2>
+                    <p class="text-xl-start font-color font">Составление сметы для мероприятий; Обучение подчинённых основным методам работы, передача опыта; Распределение задач, выставление дедлайнов по задачам; Закупка необходимого (из общего бюджета Комитета / мероприятия).</p>
+                    <h2 class="font-color pt-5 pb-3">Отдел фандрайза: </h2>
+                    <p class="text-xl-start font-color font">Составление сметы для мероприятий; Обучение подчинённых основным методам работы, передача опыта; Распределение задач, выставление дедлайнов по задачам; Закупка необходимого (из общего бюджета Комитета / мероприятия). </p>
+                    <h2 class="font-color pt-5 pb-3">Отдел разработки: </h2>
+                    <p class="text-xl-start font-color font">Поддержка существующего кода;  Разработка приложений / модулей приложений;  Техническое сопровождение мероприятий (помощь по настройке оборудования на мероприятиях, подключение и т.д.)  Поддержка сервера в рабочем состоянии.</p>
+                    <h2 class="font-color pt-5 pb-3">SMM-отдел: </h2>
+                    <p class="text-xl-start font-color font">Написание текста к постам; Информационное сопровождение мероприятий Комитета: А) Создание форм регистрации; Б) Контроль и информационное сопровождение участников до момента конца мероприятия; 3) Поиск информации согласно поставленной задаче; Ответы на сообщения в группе в ВК Комитета </p>
+                    <h2 class="font-color pt-5 pb-3">Отдел Дизайна: </h2>
+                    <p class="text-xl-start font-color font">Создание дизайна мерча согласно поставленной задаче; Создание сопровождения для постов в информационные ресурсы Комитета; Создание макетов дизайна согласно поставленной задаче.</p>
+                </div>
+            </div>
+
+    </section>
+</body>
+</html>
